@@ -87,18 +87,13 @@ if status_ok then
     sign_priority = 8, -- sign priority
     -- keywords recognized as todo comments
     keywords = {
-      FIX = {
-        icon = icons.ui.Bug, -- icon used for the sign, and in search results
-        color = error_red, -- can be a hex color, or a named color (see below)
-        alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' }, -- a set of other keywords that all map to this FIX keywords
-        -- signs = false, -- configure signs for some keywords individually
-      },
-      DELETE = { icon = icons.ui.Check, color = hint_blue, alt = { 'DELETE', 'DELETEME' } },
-      TODO = { icon = icons.ui.Check, color = hint_blue, alt = { 'TIP' } },
-      HACK = { icon = icons.ui.Fire, color = warning_orange },
-      WARN = { icon = icons.diagnostics.Warning, color = warning_orange, alt = { 'WARNING', 'XXX' } },
-      PERF = { icon = icons.ui.Dashboard, color = perf_purple, alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
-      NOTE = { icon = icons.ui.Note, color = info_yellow, alt = { 'INFO' } },
+      FIX    = { icon = icons.ui.Bug,              color = error_red,      alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' }, },
+      DELETE = { icon = icons.ui.Check,            color = hint_blue,      alt = { 'DELETE', 'DELETEME' } },
+      TODO   = { icon = icons.ui.Check,            color = hint_blue,      alt = { 'TIP' } },
+      HACK   = { icon = icons.ui.Fire,             color = warning_orange },
+      WARN   = { icon = icons.diagnostics.Warning, color = warning_orange },
+      PERF   = { icon = icons.ui.Dashboard,        color = perf_purple },
+      NOTE   = { icon = icons.ui.Note,             color = info_yellow,    alt = { 'INFO' } },
     },
     -- merge_keywords = true, -- when true, custom keywords will be merged with the defaults
     -- highlighting of the line containing the todo comment

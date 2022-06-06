@@ -3,6 +3,9 @@ if not status_ok then
   return
 end
 
+local icons = require 'user.icons'
+local handlers = require 'user.lsp.handlers'
+
 local servers = {
   "clangd",
   "cmake",
@@ -15,22 +18,11 @@ local settings = {
   -- automatic_installation = false,
   ui = {
     icons = {
-      -- server_installed = "◍",
-      -- server_pending = "◍",
-      -- server_uninstalled = "◍",
-      -- server_installed = "✓",
-      -- server_pending = "➜",
-      -- server_uninstalled = "✗",
+      server_installed = icons.ui.BigCircle,
+      server_pending = icons.ui.Download,
+      server_uninstalled = icons.ui.BigUnfilledCircle,
     },
-    keymaps = {
-      toggle_server_expand = "<CR>",
-      install_server = "i",
-      update_server = "u",
-      check_server_version = "c",
-      update_all_servers = "U",
-      check_outdated_servers = "C",
-      uninstall_server = "X",
-    },
+    keymaps = require "user.keymaps".lsp_installer(),
   },
 
   log_level = vim.log.levels.INFO,
@@ -49,8 +41,8 @@ local opts = {}
 
 for _, server in pairs(servers) do
   opts = {
-    on_attach = require("user.lsp.handlers").on_attach,
-    capabilities = require("user.lsp.handlers").capabilities,
+    on_attach = handlers.on_attach,
+    capabilities = handlers.capabilities,
   }
 
   if server == "sumneko_lua" then
@@ -58,8 +50,11 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
 
+  if server == "clangd" then
+    local clangd_opts = require "user.lsp.settings.clangd"
+    opts = vim.tbl_deep_extend("keep", clangd_opts, opts)
+  end
+
   lspconfig[server].setup(opts)
 end
 
--- TODO: add something to installer later
--- require("lspconfig").motoko.setup {}
