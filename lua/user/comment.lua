@@ -87,13 +87,13 @@ if status_ok then
     sign_priority = 8, -- sign priority
     -- keywords recognized as todo comments
     keywords = {
-      FIX    = { icon = icons.ui.Bug,              color = error_red,      alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' }, },
-      DELETE = { icon = icons.ui.Check,            color = hint_blue,      alt = { 'DELETE', 'DELETEME' } },
-      TODO   = { icon = icons.ui.Check,            color = hint_blue,      alt = { 'TIP' } },
-      HACK   = { icon = icons.ui.Fire,             color = warning_orange },
+      FIX    = { icon = icons.ui.Bug, color = error_red, alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' }, },
+      DELETE = { icon = icons.ui.Check, color = hint_blue, alt = { 'DELETE', 'DELETEME' } },
+      TODO   = { icon = icons.ui.Check, color = hint_blue, alt = { 'TIP' } },
+      HACK   = { icon = icons.ui.Fire, color = warning_orange },
       WARN   = { icon = icons.diagnostics.Warning, color = warning_orange },
-      PERF   = { icon = icons.ui.Dashboard,        color = perf_purple },
-      NOTE   = { icon = icons.ui.Note,             color = info_yellow,    alt = { 'INFO' } },
+      PERF   = { icon = icons.ui.Dashboard, color = perf_purple },
+      NOTE   = { icon = icons.ui.Note, color = info_yellow, alt = { 'INFO' } },
     },
     -- merge_keywords = true, -- when true, custom keywords will be merged with the defaults
     -- highlighting of the line containing the todo comment

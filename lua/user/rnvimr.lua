@@ -23,7 +23,7 @@ vim.g.rnvimr_enable_bw = 1
 vim.g.rnvimr_shadow_winblend = 70
 
 -- --Draw border with both
-vim.g.rnvimr_ranger_cmd = {'ranger', '--cmd=set draw_borders both'}
+vim.g.rnvimr_ranger_cmd = { 'ranger', '--cmd=set draw_borders both' }
 
 -- --Link CursorLine into RnvimrNormal highlight in the Floating window
 vim.cmd "highlight link RnvimrNormal CursorLine"

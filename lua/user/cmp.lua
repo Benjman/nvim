@@ -29,7 +29,7 @@ cmp.setup {
   --   return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or cmp_dap.is_dap_buffer()
   -- end,
 
-  mapping = cmp.mapping.preset.insert( require "user.keymaps".cmp(cmp, luasnip) ),
+  mapping = cmp.mapping.preset.insert(require "user.keymaps".cmp(cmp, luasnip)),
 
   formatting = {
     fields = { "kind", "abbr", "menu" },

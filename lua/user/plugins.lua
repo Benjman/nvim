@@ -85,7 +85,7 @@ return packer.startup(function(use)
   use "L3MON4D3/LuaSnip" --snippet engine -- TODO does this need configuration?
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-    -- lsp
+  -- lsp
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
   use "ray-x/lsp_signature.nvim"
@@ -93,7 +93,7 @@ return packer.startup(function(use)
   -- telescope
   use "nvim-telescope/telescope.nvim"
   use "nvim-telescope/telescope-file-browser.nvim"
-  use {"nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
   use "nvim-telescope/telescope-media-files.nvim"
   use "nvim-telescope/telescope-ui-select.nvim"
   use "tom-anders/telescope-vim-bookmarks.nvim"
@@ -110,7 +110,7 @@ return packer.startup(function(use)
   use "romgrk/nvim-treesitter-context"
   use "mizlan/iswap.nvim"
 
-    -- Automatically set up your configuration after cloning packer.nvim
+  -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
