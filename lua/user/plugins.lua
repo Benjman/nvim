@@ -49,14 +49,11 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
   -- use "folke/which-key.nvim" -- TODO implement
   use "andymass/vim-matchup"
-  use "nacro90/numb.nvim" -- TODO implement
   use "windwp/nvim-spectre"
-  use "folke/zen-mode.nvim"
   use "karb94/neoscroll.nvim"
   -- use "ThePrimeagen/harpoon" -- TODO implement
   use "tpope/vim-repeat"
   use "rcarriga/nvim-notify"
-  use "ghillb/cybu.nvim"
   use "rmagatti/auto-session"
 
   -- commenting
