@@ -5,7 +5,7 @@ local cmd = function(c) return "<cmd>" .. c .. "<cr>" end
 local pickers = require 'user.telescope.pickers'
 
 M.setup = function()
-  set({ "i", "n" }, "<C-i>", cmd "lua vim.lsp.buf.signature_help()", opts)
+  set({ "i", "n" }, "<C-i>", vim.lsp.buf.signature_help, opts)
   set("n", "<C-Down>", cmd "resize +2", opts) -- window resizing
   set("n", "<C-Left>", cmd "vertical resize -2", opts) -- window resizing
   set("n", "<C-Right>", cmd "vertical resize +2", opts) -- window resizing
@@ -19,9 +19,9 @@ M.setup = function()
   set("n", "<C-q>", cmd "cclose", opts) -- close quickfix list
   set("n", "<leader>e", cmd "RnvimrToggle", opts)
   set("n", "<leader>lI", cmd "LspInstallInfo", opts)
-  set("n", "<leader>la", cmd "lua vim.lsp.buf.code_action()", opts)
+  set("n", "<leader>la", vim.lsp.buf.code_action, opts)
   set("n", "<leader>li", cmd "LspInfo", opts)
-  set("n", "<leader>lr", cmd "lua vim.lsp.buf.rename()", opts)
+  set("n", "<leader>lr", vim.lsp.buf.rename, opts)
   set("n", "gv", cmd "vert split | lua vim.lsp.buf.definition()", opts) -- goes to definition in a vertical split
   set("n", "gs", cmd "split      | lua vim.lsp.buf.definition()", opts) -- goes to definition in a split
   set("v", "<", "<gv", opts) -- indentation without leaving visual mode
@@ -38,18 +38,18 @@ end
 
 M.lsp = function(bufnr)
   local lsp_opts = vim.tbl_deep_extend("force", { buffer = bufnr }, opts)
-  -- set("n", "<C-k>", cmd "lua vim.lsp.buf.signature_help()",                  lsp_opts)
-  -- set("n", "<leader>ca", cmd "lua vim.lsp.buf.code_action()",                lsp_opts)
-  -- set("n", "<leader>f", cmd "lua vim.diagnostic.open_float()",               lsp_opts)
-  -- set("n", "<leader>q", cmd "lua vim.diagnostic.setloclist()",               lsp_opts)
-  -- set("n", "<leader>rn", cmd "lua vim.lsp.buf.rename()",                     lsp_opts)
-  set("n", "K", cmd "lua vim.lsp.buf.hover()", lsp_opts)
+  -- set("n", "<C-k>", vim.lsp.buf.signature_help,                  lsp_opts)
+  -- set("n", "<leader>ca", vim.lsp.buf.code_action,                lsp_opts)
+  -- set("n", "<leader>f", vim.diagnostic.open_float,               lsp_opts)
+  -- set("n", "<leader>q", vim.diagnostic.setloclist,               lsp_opts)
+  -- set("n", "<leader>rn", vim.lsp.buf.rename,                     lsp_opts)
+  set("n", "K", vim.lsp.buf.hover, lsp_opts)
   -- set("n", "[d", cmd 'lua vim.diagnostic.goto_prev({ border = "rounded" })', lsp_opts)
   -- set("n", "]d", cmd 'lua vim.diagnostic.goto_next({ border = "rounded" })', lsp_opts)
-  set("n", "gD", cmd "lua vim.lsp.buf.declaration()", lsp_opts)
-  set("n", "gI", cmd "lua vim.lsp.buf.implementation()", lsp_opts)
-  set("n", "gd", cmd "lua vim.lsp.buf.definition()", lsp_opts)
-  set("n", "gl", cmd "lua vim.diagnostic.open_float()", lsp_opts)
+  set("n", "gD", vim.lsp.buf.declaration, lsp_opts)
+  set("n", "gI", vim.lsp.buf.implementation, lsp_opts)
+  set("n", "gd", vim.lsp.buf.definition, lsp_opts)
+  set("n", "gl", vim.diagnostic.open_float, lsp_opts)
   set("n", "gr", pickers.lsp_references, lsp_opts)
   set("x", "<leader>f", vim.lsp.buf.range_formatting, lsp_opts)
 
