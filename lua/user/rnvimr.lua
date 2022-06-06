@@ -41,6 +41,7 @@ vim.cmd "highlight link RnvimrNormal CursorLine"
 -- tnoremap <silent> <M-y> <C-\><C-n>:RnvimrResize 6<CR>
 
 -- --Map Rnvimr action
+vim.g.tokyonight_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' }
 -- vim.g.rnvimr_action = {
 --             \ '<C-t>': 'NvimEdit tabedit',
 --             \ '<C-x>': 'NvimEdit split',
