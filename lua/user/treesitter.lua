@@ -32,10 +32,10 @@ configs.setup({
   rainbow = {
     enable = true,
     colors = {
-      "Gold",
-      "Orchid",
+      -- "Gold",
       "DodgerBlue",
       "Cornsilk",
+      "Orchid",
       "Salmon",
       "LawnGreen",
     },
