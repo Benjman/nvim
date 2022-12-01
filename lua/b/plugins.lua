@@ -48,5 +48,10 @@ return packer.startup {
       'kyazdani42/nvim-tree.lua',
       config = function() require 'b.plugins.nvim-tree' end,
     }
+
+    use {
+      'shatur/neovim-session-manager',
+      config = function() require 'b.plugins.neovim-session-manager' end,
+    }
   end,
 }
