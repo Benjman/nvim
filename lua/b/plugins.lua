@@ -43,5 +43,10 @@ packer.init {
 return packer.startup {
   function(use)
     use { 'wbthomason/packer.nvim', event = 'VimEnter' }
+
+    use {
+      'kyazdani42/nvim-tree.lua',
+      config = function() require 'b.plugins.nvim-tree' end,
+    }
   end,
 }
