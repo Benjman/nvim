@@ -69,5 +69,10 @@ return packer.startup {
       'numToStr/Comment.nvim',
       config = function() require 'b.plugins.nvim-comment' end,
     }
+
+    use {
+      'psliwka/vim-dirtytalk',
+      run = ':DirtytalkUpdate',
+    }
   end,
 }
