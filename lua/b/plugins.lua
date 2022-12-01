@@ -64,5 +64,10 @@ return packer.startup {
       config = function() require 'b.plugins.nvim-treesitter' end,
       run = function() vim.cmd [[TSUpdate]] end,
     }
+
+    use {
+      'numToStr/Comment.nvim',
+      config = function() require 'b.plugins.nvim-comment' end,
+    }
   end,
 }
