@@ -53,5 +53,15 @@ return packer.startup {
       'shatur/neovim-session-manager',
       config = function() require 'b.plugins.neovim-session-manager' end,
     }
+
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      requires = {
+        'nvim-treesitter/playground',
+        -- 'p00f/nvim-ts-rainbow',
+      },
+      config = function() require 'b.plugins.nvim-treesitter' end,
+      run = function() vim.cmd [[TSUpdate]] end,
+    }
   end,
 }
