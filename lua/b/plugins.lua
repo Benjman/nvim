@@ -115,5 +115,10 @@ return packer.startup {
       'NvChad/nvim-colorizer.lua',
       config = function() require 'b.plugins.nvim-colorizer' end,
     }
+
+    use {
+      'folke/tokyonight.nvim',
+      config = function() require 'b.colorscheme' end,
+    }
   end,
 }
