@@ -86,5 +86,11 @@ return packer.startup {
       },
       config = function() require 'b.plugins.telescope' end,
     }
+
+    use {
+      'anuvyklack/hydra.nvim',
+      requires = { { 'sindrets/winshift.nvim' } },
+      config = function() require 'b.plugins.hydra' end,
+    }
   end,
 }
