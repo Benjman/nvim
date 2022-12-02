@@ -92,5 +92,9 @@ return packer.startup {
       requires = { { 'sindrets/winshift.nvim' } },
       config = function() require 'b.plugins.hydra' end,
     }
+
+    -- snippets
+    use { 'L3MON4D3/LuaSnip' }
+    use { 'rafamadriz/friendly-snippets' }
   end,
 }
