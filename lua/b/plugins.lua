@@ -110,5 +110,10 @@ return packer.startup {
       },
       config = function() require 'b.plugins.nvim-cmp' end,
     }
+
+    use {
+      'NvChad/nvim-colorizer.lua',
+      config = function() require 'b.plugins.nvim-colorizer' end,
+    }
   end,
 }
