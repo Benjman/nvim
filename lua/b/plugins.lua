@@ -120,5 +120,10 @@ return packer.startup {
       'folke/tokyonight.nvim',
       config = function() require 'b.colorscheme' end,
     }
+
+    use {
+      'folke/which-key.nvim',
+      config = function() require 'b.plugins.which-key' end,
+    }
   end,
 }
