@@ -125,5 +125,10 @@ return packer.startup {
       'folke/which-key.nvim',
       config = function() require 'b.plugins.which-key' end,
     }
+
+    use {
+      'lewis6991/gitsigns.nvim',
+      config = function() require 'b.plugins.gitsigns' end,
+    }
   end,
 }
