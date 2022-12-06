@@ -130,5 +130,10 @@ return packer.startup {
       'lewis6991/gitsigns.nvim',
       config = function() require 'b.plugins.gitsigns' end,
     }
+
+    use {
+      'jose-elias-alvarez/null-ls.nvim',
+      config = function() require 'b.plugins.null-ls' end,
+    }
   end,
 }
