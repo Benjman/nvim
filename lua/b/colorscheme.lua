@@ -39,6 +39,7 @@ local function on_highlights(hl, colors)
     hl.NvimTreeOpenedFile = { bold = true, italic = true }
   end
 
+  if pcall(require, 'gitsigns') then hl.GitSignsCurrentLineBlame = { fg = colors.orange } end
 end
 
 tokyonight.setup {
