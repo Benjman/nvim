@@ -18,6 +18,7 @@ local function on_highlights(hl, colors)
   hl.SignColumn = { bg = colors.bg_dark }
   hl.StatusLine = { fg = colors.fg_float, bg = colors.bg_highlight }
   hl.WinSeparator = { fg = colors.dark3 }
+  hl.IncSearch = { bg = colors.fg_gutter } -- yank highlight color
 
   if pcall(require, 'telescope') then
     hl.TelescopeNormal = { bg = colors.bg_dark, fg = colors.dark3fg_dark }
