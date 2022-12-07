@@ -135,5 +135,10 @@ return packer.startup {
       'jose-elias-alvarez/null-ls.nvim',
       config = function() require 'b.plugins.null-ls' end,
     }
+
+    use {
+      'ellisonleao/glow.nvim',
+      config = function() require 'b.plugins.glow-nvim' end,
+    }
   end,
 }
