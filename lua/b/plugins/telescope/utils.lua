@@ -94,8 +94,28 @@ local function lsp_code_actions(opts)
   builtin.lsp_code_actions(opts)
 end
 
+local function highlights()
+  -- Extending default builtin to take selected value and put it into the buffer at the cursor position
+  builtin.highlights {
+    attach_mappings = function(prompt_bufnr, _)
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+        local pos = vim.api.nvim_win_get_cursor(0)
+        local line = vim.api.nvim_get_current_line()
+        local new_line = line:sub(0, pos[2])
+          .. action_state.get_selected_entry().value
+          .. line:sub(pos[2] + 1, string.len(line))
+        vim.api.nvim_set_current_line(new_line)
+        vim.api.nvim_win_set_cursor(0, { pos[1], string.len(new_line) })
+      end)
+      return true
+    end,
+  }
+end
+
 return {
   help_tags = help_tags,
+  highlights = highlights,
   live_grep_in_folder = live_grep_in_folder,
   lsp_code_actions = lsp_code_actions,
   search_config = search_config,
