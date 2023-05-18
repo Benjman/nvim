@@ -2,6 +2,7 @@ local plugins = function(use)
   use { 'nvim-lua/plenary.nvim' } -- General Lua functions and utilities
   use { 'wbthomason/packer.nvim', opt = true } -- Plugin manager
 
+  use { 'nvim-treesitter/nvim-treesitter', event = 'BufEnter', run = ':TSUpdate', config = [[require('b.plugins.treesitter')]] } -- Syntax highlighting and parsing using Treesitter
 end
 
 local api = vim.api
