@@ -13,6 +13,7 @@ local plugins = function(use)
   use { 'tpope/vim-commentary', event = 'VimEnter' } -- Commenting plugin
   use { 'stevearc/dressing.nvim' } -- Utility UI library
   use { 'lewis6991/gitsigns.nvim', config = [[require('b.plugins.gitsigns')]] } -- Git integration plugin
+  use { 'kevinhwang91/nvim-bqf', ft = 'qf', config = [[require('b.plugins.bqf')]] } -- Better quickfix window plugin
 
   use { 'nvim-telescope/telescope.nvim', config = [[require('b.plugins.telescope')]] } -- A highly extensible fuzzy finder
   use { 'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim' } -- Enables symbol search functionality
