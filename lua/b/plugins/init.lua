@@ -7,6 +7,7 @@ local plugins = function(use)
   use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' }, config = [[require('b.plugins.nvim-tree')]] } -- Provides a file explorer tree for easy navigation and management
   use { 'nvim-tree/nvim-web-devicons' } -- File icon support for NvimTree
   use { 'nvim-lualine/lualine.nvim', event = 'VimEnter', config = [[require('b.plugins.statusline')]] } -- Statusline plugin
+  use { 'akinsho/bufferline.nvim', event = 'VimEnter', config = [[require('b.plugins.bufferline')]] } -- Buffer line plugin
 
   use { 'nvim-telescope/telescope.nvim', config = [[require('b.plugins.telescope')]] } -- A highly extensible fuzzy finder
   use { 'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim' } -- Enables symbol search functionality
