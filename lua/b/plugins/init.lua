@@ -12,6 +12,7 @@ local plugins = function(use)
   use { 'rcarriga/nvim-notify', event = 'BufEnter', config = function() vim.defer_fn(function() require('b.plugins.nvim-notify') end, 2000) end } -- Notification plugin
   use { 'tpope/vim-commentary', event = 'VimEnter' } -- Commenting plugin
   use { 'stevearc/dressing.nvim' } -- Utility UI library
+  use { 'lewis6991/gitsigns.nvim', config = [[require('b.plugins.gitsigns')]] } -- Git integration plugin
 
   use { 'nvim-telescope/telescope.nvim', config = [[require('b.plugins.telescope')]] } -- A highly extensible fuzzy finder
   use { 'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim' } -- Enables symbol search functionality
