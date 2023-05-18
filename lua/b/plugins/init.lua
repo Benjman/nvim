@@ -15,6 +15,15 @@ local plugins = function(use)
 
   use { 'SirVer/ultisnips', event = 'InsertEnter' } -- Snippet engine
   use { 'honza/vim-snippets', after = 'ultisnips' } -- Snippet collection for UltiSnips
+
+  use { 'onsails/lspkind-nvim', event = 'VimEnter' } -- Adds symbol icons for LSP items
+  use { 'hrsh7th/nvim-cmp', after = 'lspkind-nvim', config = [[require('b.plugins.nvim-cmp')]] } -- Autocompletion plugin framework
+  use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' } -- Completion source for buffer words
+  use { 'hrsh7th/cmp-emoji', after = 'nvim-cmp' } -- Provides emoji completion
+  use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' } -- Adds LSP completion source
+  use { 'quangnguyen30192/cmp-nvim-ultisnips', after = { 'nvim-cmp', 'ultisnips' } } -- Enables UltiSnips as a source
+  use { 'hrsh7th/cmp-omni', after = 'nvim-cmp' } -- Adds Omni completion source
+  use { 'hrsh7th/cmp-path', after = 'nvim-cmp' } -- Provides file path completion source
 end
 
 local api = vim.api
