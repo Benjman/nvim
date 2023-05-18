@@ -11,6 +11,7 @@ local plugins = function(use)
   use { 'lukas-reineke/indent-blankline.nvim', event = 'VimEnter', config = [[require('b.plugins.indent-blankline')]] } -- Indentation guide lines plugin
   use { 'rcarriga/nvim-notify', event = 'BufEnter', config = function() vim.defer_fn(function() require('b.plugins.nvim-notify') end, 2000) end } -- Notification plugin
   use { 'tpope/vim-commentary', event = 'VimEnter' } -- Commenting plugin
+  use { 'stevearc/dressing.nvim' } -- Utility UI library
 
   use { 'nvim-telescope/telescope.nvim', config = [[require('b.plugins.telescope')]] } -- A highly extensible fuzzy finder
   use { 'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim' } -- Enables symbol search functionality
