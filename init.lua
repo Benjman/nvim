@@ -4,6 +4,7 @@ for _, name in ipairs({
   'autocommands',
   'mappings',
   'plugins',
+  'colorscheme',
 }) do
   require('b.' .. name)
 end

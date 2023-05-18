@@ -3,6 +3,7 @@ local plugins = function(use)
   use { 'wbthomason/packer.nvim', opt = true } -- Plugin manager
 
   use { 'nvim-treesitter/nvim-treesitter', event = 'BufEnter', run = ':TSUpdate', config = [[require('b.plugins.treesitter')]] } -- Syntax highlighting and parsing using Treesitter
+  use { 'folke/tokyonight.nvim' } -- Tokyonight color scheme
 end
 
 local api = vim.api
