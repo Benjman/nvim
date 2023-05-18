@@ -4,6 +4,8 @@ local plugins = function(use)
 
   use { 'nvim-treesitter/nvim-treesitter', event = 'BufEnter', run = ':TSUpdate', config = [[require('b.plugins.treesitter')]] } -- Syntax highlighting and parsing using Treesitter
   use { 'folke/tokyonight.nvim' } -- Tokyonight color scheme
+  use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' }, config = [[require('b.plugins.nvim-tree')]] } -- Provides a file explorer tree for easy navigation and management
+  use { 'nvim-tree/nvim-web-devicons' } -- File icon support for NvimTree
 
   use { 'nvim-telescope/telescope.nvim', config = [[require('b.plugins.telescope')]] } -- A highly extensible fuzzy finder
   use { 'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim' } -- Enables symbol search functionality
