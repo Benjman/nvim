@@ -19,6 +19,7 @@ local plugins = function(use)
   use { 'shatur/neovim-session-manager', event = 'VimEnter', config = [[require('b.plugins.session-manager')]] } -- Manage and restore sessions
   use { 'folke/todo-comments.nvim', event = 'VimEnter', config = [[require('b.plugins.todo-comments')]] } -- Highlight and manage TODO comments in code files
   use { 'norcalli/nvim-colorizer.lua', event = 'VimEnter', config = [[require('colorizer').setup()]] } -- Syntax highlighting of color codes in various file types
+  use { 'utilyre/barbecue.nvim', tag = '*', requires = { 'SmiteshP/nvim-navic', 'nvim-tree/nvim-web-devicons', }, after = 'nvim-web-devicons', config = [[require('barbecue').setup()]] } -- Display LSP context
 
   use { 'nvim-telescope/telescope.nvim', config = [[require('b.plugins.telescope')]] } -- A highly extensible fuzzy finder
   use { 'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim' } -- Enables symbol search functionality
