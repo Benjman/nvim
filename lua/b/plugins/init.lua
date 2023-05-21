@@ -18,6 +18,7 @@ local plugins = function(use)
   use { 'folke/which-key.nvim', event = 'VimEnter', config = function() vim.defer_fn(function() require('b.plugins.which-key') end, 2000) end, } -- Key mapping plugin
   use { 'shatur/neovim-session-manager', event = 'VimEnter', config = [[require('b.plugins.session-manager')]] } -- Manage and restore sessions
   use { 'folke/todo-comments.nvim', event = 'VimEnter', config = [[require('b.plugins.todo-comments')]] } -- Highlight and manage TODO comments in code files
+  use { 'norcalli/nvim-colorizer.lua', event = 'VimEnter', config = [[require('colorizer').setup()]] } -- Syntax highlighting of color codes in various file types
 
   use { 'nvim-telescope/telescope.nvim', config = [[require('b.plugins.telescope')]] } -- A highly extensible fuzzy finder
   use { 'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim' } -- Enables symbol search functionality
