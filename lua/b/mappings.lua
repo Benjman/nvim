@@ -16,6 +16,7 @@ require('b.utils').apply_keymaps({
   { 'v', 'p',        '"_dP',            'Replace selected with yanked' },
   { 'n', '/',        [[/\v]],           'Very magic mode for searching' },
   { 't', '<Esc>',    [[<c-\><c-n>]],    'Escape to quit terminal' },
+  { 'i', '<c-o>',    [[<esc>O]],        'Insert line below while in insert mode' },
 
   { 'n', '<leader><leader>ev',   cmd 'tabnew $MYVIMRC <bar> tcd %:h',   'Edit Neovim config' },
   { 'n', '<leader><leader>sv',   reload_neovim_config,                  'Reload Neovim config' },
