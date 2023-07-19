@@ -1,6 +1,8 @@
 local fn = vim.fn
 
-local M = {}
+local M = {
+  config_augroup = vim.api.nvim_create_augroup('BGroup', { clear = true }),
+}
 
 function M.executable(name)
   if fn.executable(name) > 0 then
