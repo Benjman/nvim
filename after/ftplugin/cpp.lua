@@ -10,10 +10,6 @@ if vim.fn.executable('clangd') == 1 then
     on_attach = function(client, bufnr)
       local lsp = require 'b.lsp'
       lsp.on_attach(client, bufnr)
-      if vim.fn.filereadable(client.config.root_dir .. '/.clang-format') == 1 then
-        lsp.format_on_save_enable(bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-      end
     end,
   })
 end

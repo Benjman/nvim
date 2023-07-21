@@ -1,4 +1,7 @@
-local M = {}
+local M = {
+  fmt_is_enabled = true,
+  fmt_augroups = {},
+}
 local cmp_nvim_lsp_present, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 
 function M.init()
@@ -27,10 +30,6 @@ function M.on_attach(_, bufnr)
 end
 
 function M.set_lsp_keymaps(bufnr)
-  local toggle_formatting = function()
-    M.format_on_save_toggle(bufnr)
-  end
-
   local function opts(desc)
     return { desc = 'LSP: ' .. desc, buffer = bufnr, noremap = true, silent = true }
   end
@@ -41,7 +40,6 @@ function M.set_lsp_keymaps(bufnr)
     { 'n', 'gi', vim.lsp.buf.implementation, opts('Go to implementation') },
     { 'n', '<leader>pd', vim.diagnostic.open_float, opts('Show diagnostics') },
     { 'n', '<leader>pr', vim.lsp.buf.rename, opts('Rename') },
-    { 'n', '<leader>lf', toggle_formatting, opts('Toggle formatting on/off') },
     { 'n', '<leader>la', vim.lsp.buf.code_action, opts('Code action') },
     { 'n', 'gs', '<C-w>s<cmd>lua vim.lsp.buf.definition()<cr>', opts('Go to definition in horizontal split') },
     { 'n', 'gv', '<C-w>v<cmd>lua vim.lsp.buf.definition()<cr>', opts('Go to definition in vertical split') },
@@ -55,29 +53,13 @@ function M.set_lsp_keymaps(bufnr)
   require('b.utils').apply_keymaps(lsp_keymaps)
 end
 
-local formatting = { formatting_autocmds = {}, format_on_save_grp_ = vim.api.nvim_create_augroup('LspFormatting', {}) }
-
-function M.format_on_save_enable(bufnr)
-  formatting.formatting_autocmds[bufnr] = vim.api.nvim_create_autocmd('BufWritePre', {
-    buffer = bufnr,
-    group = formatting.format_on_save_grp_,
-    callback = vim.lsp.buf.formatting_sync,
-  })
-  vim.notify 'Enabled formatting on save'
-end
-
-function M.format_on_save_disable(bufnr)
-  vim.api.nvim_del_autocmd(formatting.formatting_autocmds[bufnr])
-  formatting.formatting_autocmds[bufnr] = nil
-  vim.notify 'Disabled formatting on save'
-end
-
-function M.format_on_save_toggle(bufnr)
-  if formatting.formatting_autocmds[bufnr] == nil then
-    M.format_on_save_enable(bufnr)
-  else
-    M.format_on_save_disable(bufnr)
+function M.fmt_get_augroup(client)
+  if not M.fmt_augroups[client.id] then
+    local group_name = 'b-lsp-format' .. client.name
+    local id = vim.api.nvim_create_augroup(group_name, { clear = true })
+    M.fmt_augroups[client.id] = id
   end
+  return M.fmt_augroups[client.id]
 end
 
 function M.root_pattern(...) -- from neovim/nvim-lspconfig
