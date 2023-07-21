@@ -11,6 +11,5 @@ if vim.fn.executable('lua-language-server') == 1 then
       },
     },
     root_dir = vim.fs.dirname(vim.fs.find({ '.git' }, { upward = true })[1]),
-    on_attach = require('b.lsp').on_attach,
   })
 end

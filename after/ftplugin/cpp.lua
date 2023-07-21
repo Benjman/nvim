@@ -7,9 +7,5 @@ if vim.fn.executable('clangd') == 1 then
     name = 'Clang',
     cmd = { 'clangd' },
     root_dir = vim.fs.dirname(vim.fs.find({ '.git' }, { upward = true })[1]),
-    on_attach = function(client, bufnr)
-      local lsp = require 'b.lsp'
-      lsp.on_attach(client, bufnr)
-    end,
   })
 end

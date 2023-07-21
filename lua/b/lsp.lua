@@ -24,11 +24,6 @@ function M.init()
   end
 end
 
-function M.on_attach(_, bufnr)
-  M.init()
-  M.set_lsp_keymaps(bufnr)
-end
-
 function M.set_lsp_keymaps(bufnr)
   local function opts(desc)
     return { desc = 'LSP: ' .. desc, buffer = bufnr, noremap = true, silent = true }
