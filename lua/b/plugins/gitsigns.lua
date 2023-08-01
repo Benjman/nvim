@@ -38,12 +38,6 @@ gs.setup {
       end)
       return '<Ignore>'
     end, { expr = true, desc = 'previous hunk' })
-
-    -- Actions
-    map('n', '<leader>hp', gs.preview_hunk)
-    map('n', '<leader>hb', function()
-      gs.blame_line { full = true }
-    end)
   end,
 }
 
