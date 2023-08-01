@@ -39,6 +39,7 @@ function M.set_lsp_keymaps(bufnr)
     { 'n', 'gs', '<C-w>s<cmd>lua vim.lsp.buf.definition()<cr>', opts('Go to definition in horizontal split') },
     { 'n', 'gv', '<C-w>v<cmd>lua vim.lsp.buf.definition()<cr>', opts('Go to definition in vertical split') },
     { { 'i', 'n' }, '<c-space>', vim.lsp.buf.signature_help, opts('Signature help') },
+    { 'n', '<leader>bf', M.toggle_fmt, 'Toggle formatting on save' },
   }
 
   if pcall(require, 'null-ls') then
@@ -46,6 +47,11 @@ function M.set_lsp_keymaps(bufnr)
   end
 
   require('b.utils').apply_keymaps(lsp_keymaps)
+end
+
+function M.toggle_fmt()
+  M.fmt_is_enabled = not M.fmt_is_enabled
+  vim.notify('Formatting on save toggled ' .. (M.fmt_is_enabled and 'on' or 'off'))
 end
 
 function M.fmt_get_augroup(client)
