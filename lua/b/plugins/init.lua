@@ -23,6 +23,7 @@ local plugins = function(use)
   use { 'psliwka/vim-dirtytalk', event = 'VimEnter', run = ':DirtytalkUpdate' } -- Spell check for programming
   -- use { 'axkirillov/hbac.nvim', event = 'VimEnter', config = [[require('hbac').setup()]] } -- Auto-close inactive buffers
   use { 'ellisonleao/glow.nvim', event = 'VimEnter', ft = 'markdown', config = [[require('glow').setup()]], } -- Preview markdown files directly in Neovim
+  use { 'anuvyklack/hydra.nvim', event = 'VimEnter', config = [[require('b.plugins.hydra')]] } -- Window navigation made easy
 
   use { 'nvim-telescope/telescope.nvim', config = [[require('b.plugins.telescope')]] } -- A highly extensible fuzzy finder
   use { 'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim' } -- Enables symbol search functionality
