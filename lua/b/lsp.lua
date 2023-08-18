@@ -6,8 +6,8 @@ local cmp_nvim_lsp_present, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 
 function M.init()
   vim.diagnostic.config {
-    underline = false,
-    virtual_text = false,
+    underline = true,
+    virtual_text = true,
     signs = true,
     severity_sort = true,
   }
