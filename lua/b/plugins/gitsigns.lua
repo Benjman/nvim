@@ -9,6 +9,7 @@ gs.setup {
     topdelete = { hl = 'GitSignsDelete', text = '‾', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
     changedelete = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
   },
+  current_line_blame_formatter = '<author_time:%Y-%m-%d> (<abbrev_sha>) - <summary>',
   word_diff = false,
   linehl = true,
   on_attach = function(bufnr)
@@ -51,3 +52,12 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     ]]
   end
 })
+
+local function opts(desc)
+  return { desc = 'GitSigns: ' .. desc }
+end
+
+require('b.utils').apply_keymaps {
+  { 'n', '<leader>gb', ':Gitsigns blame_line<cr>', opts('Blame line') },
+  { 'n', '<leader>gB', ':Gitsigns toggle_current_line_blame<cr>', opts('Blame line toggle') },
+}
