@@ -62,3 +62,12 @@ wk.setup {
   },
 }
 
+wk.register({
+  ['<leader><leader>'] = 'Neovim',
+  ['<leader><leader>p'] = 'Packer',
+  ['<leader>f'] = 'Find / Search',
+  ['<leader>g'] = 'GitSigns',
+  ['<leader>l'] = 'LSP',
+  ['<leader>q'] = 'Quickfix',
+  ['<leader>t'] = 'TODOs',
+});
