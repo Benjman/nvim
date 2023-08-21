@@ -42,10 +42,6 @@ function M.set_lsp_keymaps(bufnr)
     { 'n', '<leader>bf', M.toggle_fmt, 'Toggle formatting on save' },
   }
 
-  if pcall(require, 'null-ls') then
-    table.insert(lsp_keymaps, { 'n', '<leader>li', require('null-ls.info').show_window, 'LSP Info', opts })
-  end
-
   require('b.utils').apply_keymaps(lsp_keymaps)
 end
 
