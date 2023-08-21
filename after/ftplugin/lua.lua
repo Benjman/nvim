@@ -2,6 +2,7 @@ local executable = 'lua-language-server'
 if vim.fn.executable(executable) == 0 then return vim.notify('\'' .. executable .. '\' not found', vim.log.levels.WARN) end
 vim.lsp.start({
   name = 'LuaLS',
+  capabilities = require('b.lsp').get_client_capabilities(),
   cmd = { 'lua-language-server' },
   settings = {
     Lua = {

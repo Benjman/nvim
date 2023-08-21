@@ -76,4 +76,13 @@ function M.root_pattern(...) -- from neovim/nvim-lspconfig
   end
 end
 
+function M.get_client_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local present_cmp, cmp = pcall(require, 'cmp_nvim_lsp')
+  if present_cmp then
+    capabilities = vim.tbl_extend('force', capabilities, cmp.default_capabilities())
+  end
+  return capabilities
+end
+
 return M

@@ -6,6 +6,7 @@ local executable = 'clangd'
 if vim.fn.executable(executable) == 0 then return vim.notify('\'' .. executable .. '\' not found', vim.log.levels.WARN) end
 vim.lsp.start({
   name = 'Clang',
+  capabilities = require('b.lsp').get_client_capabilities(),
   cmd = { 'clangd' },
   root_dir = vim.fs.dirname(vim.fs.find({ '.git' }, { upward = true })[1]),
 })
