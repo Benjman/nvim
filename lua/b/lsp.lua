@@ -33,13 +33,13 @@ function M.set_lsp_keymaps(bufnr)
     { 'n', 'gd', vim.lsp.buf.definition, opts('Go to definition') },
     { 'n', 'gr', vim.lsp.buf.references, opts('Find references') },
     { 'n', 'gi', vim.lsp.buf.implementation, opts('Go to implementation') },
-    { 'n', '<leader>pd', vim.diagnostic.open_float, opts('Show diagnostics') },
-    { 'n', '<leader>pr', vim.lsp.buf.rename, opts('Rename') },
+    { 'n', '<leader>ld', vim.diagnostic.open_float, opts('Show diagnostics') },
+    { 'n', '<leader>lr', vim.lsp.buf.rename, opts('Rename') },
     { 'n', '<leader>la', vim.lsp.buf.code_action, opts('Code action') },
     { 'n', 'gs', '<C-w>s<cmd>lua vim.lsp.buf.definition()<cr>', opts('Go to definition in horizontal split') },
     { 'n', 'gv', '<C-w>v<cmd>lua vim.lsp.buf.definition()<cr>', opts('Go to definition in vertical split') },
     { { 'i', 'n' }, '<c-space>', vim.lsp.buf.signature_help, opts('Signature help') },
-    { 'n', '<leader>bf', M.toggle_fmt, 'Toggle formatting on save' },
+    { 'n', '<leader>lf', M.toggle_fmt, 'Toggle formatting on save' },
   }
 
   require('b.utils').apply_keymaps(lsp_keymaps)
