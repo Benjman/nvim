@@ -9,7 +9,7 @@ local plugins = function(use)
   use { 'nvim-lualine/lualine.nvim', event = 'VimEnter', config = [[require('b.plugins.statusline')]] } -- Statusline plugin
   use { 'akinsho/bufferline.nvim', event = 'VimEnter', config = [[require('b.plugins.bufferline')]] } -- Buffer line plugin
   use { 'lukas-reineke/indent-blankline.nvim', event = 'VimEnter', config = [[require('b.plugins.indent-blankline')]] } -- Indentation guide lines plugin
-  use { 'rcarriga/nvim-notify', event = 'BufEnter', config = function() vim.defer_fn(function() require('b.plugins.nvim-notify') end, 2000) end } -- Notification plugin
+  use { 'rcarriga/nvim-notify', event = 'BufEnter', config = [[require('b.plugins.nvim-notify')]] } -- Notification plugin
   use { 'tpope/vim-commentary', event = 'VimEnter' } -- Commenting plugin
   use { 'stevearc/dressing.nvim' } -- Utility UI library
   use { 'lewis6991/gitsigns.nvim', config = [[require('b.plugins.gitsigns')]] } -- Git integration plugin
