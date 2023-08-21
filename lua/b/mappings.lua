@@ -19,8 +19,8 @@ require('b.utils').apply_keymaps({
   { 'i', '<c-o>',    [[<esc>O]],        'Insert line below while in insert mode' },
   { 'n', '<c-w>c',   cmd 'bdelete',     'Delete current buffer' },
 
-  { 'n', '<leader><leader>ev',   cmd 'tabnew $MYVIMRC <bar> tcd %:h',   'Edit Neovim config' },
-  { 'n', '<leader><leader>sv',   reload_neovim_config,                  'Reload Neovim config' },
+  { 'n', '<leader><leader>e',    cmd 'tabnew $MYVIMRC <bar> tcd %:h',   'Edit Neovim config' },
+  { 'n', '<leader><leader>s',    reload_neovim_config,                  'Reload Neovim config' },
   { 'n', '<leader><leader>n',    cmd 'Notifications',                   'View notifications' },
 
   { 'n', '<leader>qn',   cmd 'cnext',   'Quickfix next' },
