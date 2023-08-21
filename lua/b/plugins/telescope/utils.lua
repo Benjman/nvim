@@ -11,16 +11,18 @@ local scan = require 'plenary.scandir'
 local builtin = require 'telescope.builtin'
 local themes = require 'telescope.themes'
 
-local function search_config()
+local M = {}
+
+function M.search_config()
   builtin.find_files {
     prompt_title = '< VimConfig >',
     cwd = '$HOME/.config/nvim',
   }
 end
 
-local function help_tags() builtin.help_tags(themes.get_ivy()) end
+function M.help_tags() builtin.help_tags(themes.get_ivy()) end
 
-local function live_grep_in_folder(opts)
+function M.live_grep_in_folder(opts)
   opts = opts or {}
   local data = {}
   scan.scan_dir(vim.loop.cwd(), {
@@ -59,7 +61,7 @@ local function live_grep_in_folder(opts)
 end
 
 ---Sort and filter lsp results
-local function sort_null_ls_as_last(lsp_results)
+function M.sort_null_ls_as_last(lsp_results)
   local results = {}
   local null_results = {}
 
@@ -79,7 +81,7 @@ local function sort_null_ls_as_last(lsp_results)
   return vim.list_extend(results, null_results)
 end
 
-local function lsp_code_actions(opts)
+function M.lsp_code_actions(opts)
   -- Attach to vim.lsp.buf_request_sync
   local buf_request_sync = vim.lsp.buf_request_sync
 
@@ -88,13 +90,13 @@ local function lsp_code_actions(opts)
     vim.lsp.buf_request_sync = buf_request_sync
     if err then return nil, err end
 
-    return sort_null_ls_as_last(lsp_results), nil
+    return M.sort_null_ls_as_last(lsp_results), nil
   end
 
   builtin.lsp_code_actions(opts)
 end
 
-local function highlights()
+function M.highlights()
   -- Extending default builtin to take selected value and put it into the buffer at the cursor position
   builtin.highlights {
     attach_mappings = function(prompt_bufnr, _)
@@ -113,11 +115,4 @@ local function highlights()
   }
 end
 
-return {
-  help_tags = help_tags,
-  highlights = highlights,
-  live_grep_in_folder = live_grep_in_folder,
-  lsp_code_actions = lsp_code_actions,
-  search_config = search_config,
-  solsp_code_actionsrt_null_ls_as_last = sort_null_ls_as_last,
-}
+return M
