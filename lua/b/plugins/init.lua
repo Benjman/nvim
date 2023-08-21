@@ -26,9 +26,9 @@ local plugins = function(use)
   use { 'anuvyklack/hydra.nvim', event = 'VimEnter', config = [[require('b.plugins.hydra')]] } -- Window navigation made easy
 
   use { 'nvim-telescope/telescope.nvim', config = [[require('b.plugins.telescope')]] } -- A highly extensible fuzzy finder
-  use { 'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim' } -- Enables symbol search functionality
-  use { 'nvim-telescope/telescope-ui-select.nvim', after = 'telescope.nvim' } -- Provides UI customization options
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', after = 'telescope.nvim' } -- Enables FZF-native sorting functionality
+  use { 'nvim-telescope/telescope-symbols.nvim', event = 'VimEnter', after = 'telescope.nvim' } -- Enables symbol search functionality
+  use { 'nvim-telescope/telescope-ui-select.nvim' } -- Provides UI customization options
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' } -- Enables FZF-native sorting functionality
 
   use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }  -- Adds LSP completion source
   use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }  -- Completion source for buffer words
