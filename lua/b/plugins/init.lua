@@ -27,7 +27,7 @@ local plugins = function(use)
 
   use { 'nvim-telescope/telescope.nvim', config = [[require('b.plugins.telescope')]] } -- A highly extensible fuzzy finder
   use { 'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim' } -- Enables symbol search functionality
-  use { 'nvim-telescope/telescope-ui-select.nvim' } -- Provides UI customization options
+  use { 'nvim-telescope/telescope-ui-select.nvim', after = 'telescope.nvim' } -- Provides UI customization options
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', after = 'telescope.nvim' } -- Enables FZF-native sorting functionality
 
   use { 'SirVer/ultisnips', event = 'InsertEnter' } -- Snippet engine
