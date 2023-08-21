@@ -28,10 +28,10 @@ hydra {
     { 'k', '<C-w>k' },
     { 'l', '<C-w>l' },
     -- Move window
-    { 'H', '<Cmd>WinShift left<CR>' },
-    { 'J', '<Cmd>WinShift down<CR>' },
-    { 'K', '<Cmd>WinShift up<CR>' },
-    { 'L', '<Cmd>WinShift right<CR>' },
+    { 'H', '<C-w>H' },
+    { 'J', '<C-w>J' },
+    { 'K', '<C-w>K' },
+    { 'L', '<C-w>L' },
     -- Split
     { 's', '<C-w>s' },
     { 'v', '<C-w>v' },
