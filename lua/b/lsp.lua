@@ -2,7 +2,6 @@ local M = {
   fmt_is_enabled = true,
   fmt_augroups = {},
 }
-local cmp_nvim_lsp_present, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 
 function M.init()
   vim.diagnostic.config {
