@@ -34,6 +34,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if not client.server_capabilities.documentFormattingProvider then return end
     if client.name == 'tsserver' then return end
+    client.server_capabilities.semanticTokensProvider = nil
 
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = blsp.fmt_get_augroup(client),
