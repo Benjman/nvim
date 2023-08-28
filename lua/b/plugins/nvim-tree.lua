@@ -62,6 +62,7 @@ local function on_attach(bufnr)
     { 'n', 'O',              api.node.open.no_window_picker,        opts('Open: No Window Picker') },
     { 'n', 'p',              api.fs.paste,                          opts('Paste') },
     { 'n', 'P',              api.node.navigate.parent,              opts('Parent Directory') },
+    { 'n', '_',              api.tree.close,                        'nvim-tree: Close' }, -- Close even when the tree isn't not focused
     { 'n', 'q',              api.tree.close,                        opts('Close') },
     { 'n', 'r',              api.fs.rename,                         opts('Rename') },
     { 'n', 'R',              api.tree.reload,                       opts('Refresh') },
