@@ -42,6 +42,8 @@ local plugins = function(use)
   -- For luasnip users.
   use { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' }
   use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
+
+  use { 'danymat/neogen', event = 'VimEnter', ft = 'cpp', config = [[require('neogen').setup({ snippet_engine = "luasnip" })]] }
 end
 
 local api = vim.api

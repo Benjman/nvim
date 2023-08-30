@@ -33,6 +33,7 @@ function M.set_lsp_keymaps(bufnr)
     { 'n', 'gr', vim.lsp.buf.references, opts('Find references') },
     { 'n', 'gi', vim.lsp.buf.implementation, opts('Go to implementation') },
     { 'n', '<leader>ld', vim.diagnostic.open_float, opts('Show diagnostics') },
+    { 'n', '<leader>lD', '<cmd>Neogen<cr>', opts('Documentation snippet') },
     { 'n', '<leader>lr', vim.lsp.buf.rename, opts('Rename') },
     { 'n', '<leader>la', vim.lsp.buf.code_action, opts('Code action') },
     { 'n', 'gs', '<C-w>s<cmd>lua vim.lsp.buf.definition()<cr>', opts('Go to definition in horizontal split') },
