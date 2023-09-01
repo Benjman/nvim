@@ -1,13 +1,21 @@
-local present, sm = pcall(require, 'session_manager')
+local present, possession = pcall(require, 'nvim-possession')
 if not present then return end
 
-sm.setup {
-  -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession
-  autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
-  autosave_ignore_filetypes = {
-    'gitcommit',
-    'gitrebase',
-    'help',
-    'man',
+possession.setup {
+  autoload = true,
+  autoswitch = {
+    enable = true,
   },
+}
+
+local wk_present, wk = pcall(require, 'which-key')
+if wk_present then
+  wk.register {['<leader><leader>s'] = { name = 'Session', }};
+end
+
+require('b.utils').apply_keymaps {
+  { 'n', '<leader><leader>sl', function() possession.list() end,   'List sessions' },
+  { 'n', '<leader><leader>sn', function() possession.new() end,    'New session' },
+  { 'n', '<leader><leader>su', function() possession.update() end, 'Update session' },
+  { 'n', '<leader><leader>sd', function() possession.delete() end, 'Delete session' },
 }
