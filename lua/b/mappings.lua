@@ -22,6 +22,7 @@ require('b.utils').apply_keymaps({
   { 'n', '<leader><leader>e',    cmd 'tabnew $MYVIMRC <bar> tcd %:h',   'Edit Neovim config' },
   { 'n', '<leader><leader>n',    cmd 'Notifications',                   'View notifications' },
 
+  { 'n', '<leader>q',    cmd 'copen',   'Quickfix' }, -- default behavior
   { 'n', '<leader>qn',   cmd 'cnext',   'Quickfix next' },
   { 'n', '<leader>qp',   cmd 'cprev',   'Quickfix prev' },
   { 'n', '<leader>qq',   cmd 'cclose',  'Quickfix close' },
