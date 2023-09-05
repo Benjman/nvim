@@ -5,4 +5,7 @@ vim.lsp.start({
   capabilities = require('b.lsp').get_client_capabilities(),
   cmd = { 'cmake-language-server' },
   root_dir = vim.fs.dirname(vim.fs.find({ 'build/' }, { upward = true })[1]),
+  on_attach = function(_, _)
+    require('b.lsp').fmt_is_enabled = false
+  end,
 })
