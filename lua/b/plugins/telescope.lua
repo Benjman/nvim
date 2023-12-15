@@ -32,9 +32,10 @@ return {
         },
       },
     })
+
     require('telescope').load_extension('ui-select')
     -- Enable telescope fzf native, if installed
-    pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'fzf_native')
 
     vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
     vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
