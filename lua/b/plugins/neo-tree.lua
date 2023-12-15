@@ -1,15 +1,15 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
-  config = function()
-    vim.keymap.set('n', '<leader>fe', '<cmd>Neotree left<cr>', { desc = '[F]ile [E]xplore' })
-    vim.keymap.set('n', '<leader>ff', '<cmd>Neotree float<cr>', { desc = '[F]ile explore [f]loat' })
-  end,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
-    "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
+  },
+  keys = {
+    { '<leader>fe', '<cmd>Neotree left<cr>',  desc = '[F]ile [E]xplore' },
+    { '<leader>ff', '<cmd>Neotree float<cr>', desc = '[F]ile explore [f]loat' },
   },
   opts = {
     filesystem = {
