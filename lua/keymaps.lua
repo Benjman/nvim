@@ -49,3 +49,35 @@ vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap
 -- start LSP server
 vim.keymap.set('n', '<leader>lss', '<cmd>LspStart<cr>', { desc = '[L]SP [S]erver: [S]tart' })
 vim.keymap.set('n', '<leader>lsi', '<cmd>LspInfo<cr>', { desc = '[L]SP [S]erver: [I]nfo' })
+
+-- File management
+vim.keymap.set('n', '<leader>fn',
+  function()
+    local new_path = vim.fn.input({
+      completion = 'dir',
+      default = './' .. vim.fn.expand('%:h') .. '/',
+      prompt = 'New File: ',
+    })
+    if new_path ~= '' and new_path ~= vim.fn.expand('%:h') .. '/' then
+      vim.api.nvim_command('silent !touch ' .. new_path)
+      vim.api.nvim_command('silent e ' .. new_path)
+    end
+  end,
+  { desc = '[F]ile [N]ew' }
+)
+
+vim.keymap.set('n', '<leader>fd',
+  function()
+    local file_path = vim.fn.expand('%:p')
+    local prompt = string.format("Are you sure you want to delete '%s'? [y/N]: ", file_path)
+    local confirm = vim.fn.input(prompt)
+    if confirm:lower() == 'y' then
+      local bufnr = vim.fn.bufnr(0)
+      vim.api.nvim_command('silent !rm ' .. vim.fn.shellescape(file_path))
+      if vim.api.nvim_buf_is_valid(bufnr) then
+        vim.api.nvim_buf_delete(bufnr, { force = true })
+      end
+    end
+  end,
+  { desc = '[F]ile [D]elete' }
+)
