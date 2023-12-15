@@ -45,3 +45,7 @@ vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap
 vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
 vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
 vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
+
+-- start LSP server
+vim.keymap.set('n', '<leader>lss', '<cmd>LspStart<cr>', { desc = '[L]SP [S]erver: [S]tart' })
+vim.keymap.set('n', '<leader>lsi', '<cmd>LspInfo<cr>', { desc = '[L]SP [S]erver: [I]nfo' })
