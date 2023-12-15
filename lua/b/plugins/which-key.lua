@@ -1,17 +1,20 @@
 return {
   'folke/which-key.nvim',
   config = function()
+    local wk_map = function(name) return { name = name, _ = 'which_key_ignore' } end
     require('which-key').register({
-      ['<leader>'] = {
-        b = { name = '[B]uffer', _ = 'which_key_ignore' },
-        d = { name = '[D]ocument', _ = 'which_key_ignore' },
-        f = { name = '[F]ile', _ = 'which_key_ignore' },
-        g = { name = '[G]it', _ = 'which_key_ignore' },
-        r = { name = '[R]ename', _ = 'which_key_ignore' },
-        s = { name = '[S]earch', _ = 'which_key_ignore' },
-        S = { name = '[S]essions', _ = 'which_key_ignore' },
-        w = { name = '[W]indow', _ = 'which_key_ignore' },
-      },
-    })
+      b = wk_map('[B]uffer'),
+      d = wk_map('[D]ocument'),
+      f = wk_map('[F]ile'),
+      g = wk_map('[G]it'),
+      l = wk_map('[L]SP'),
+      n = wk_map('[N]otification'),
+      r = wk_map('[R]ename'),
+      s = wk_map('[S]earch'),
+      S = wk_map('[S]essions'),
+      T = wk_map('[T]ools'),
+      w = wk_map('[W]indow'),
+      W = wk_map('[W]orkspace'),
+    }, { prefix = '<leader>' })
   end,
 }
