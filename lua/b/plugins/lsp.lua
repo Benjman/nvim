@@ -144,6 +144,7 @@ return {
         },
         sources = {
           { name = 'nvim_lsp' },
+          { name = 'path' },
           { name = 'luasnip' },
         },
       })
@@ -152,6 +153,8 @@ return {
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
+
+      'hrsh7th/cmp-path',
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
