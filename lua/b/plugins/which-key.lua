@@ -4,7 +4,7 @@ return {
     local wk_map = function(name) return { name = name, _ = 'which_key_ignore' } end
     require('which-key').register({
       b = wk_map('[B]uffer'),
-      d = wk_map('[D]ocument'),
+      D = wk_map('[D]ocument'),
       f = wk_map('[F]ile'),
       g = wk_map('[G]it'),
       l = wk_map('[L]SP'),

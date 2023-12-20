@@ -126,7 +126,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
       vim.lsp.buf.format()
     end, { desc = 'Format current buffer with LSP' })
-    vim.keymap.set('n', '<leader>df', '<cmd>Format<cr>', desc('[D]ocument [F]ormat'))
+    vim.keymap.set('n', '<leader>Df', '<cmd>Format<cr>', desc('[D]ocument [F]ormat'))
 
     require('which-key').register({
       s = { name = '[L]SP [S]erver', _ = 'which_key_ignore' },
