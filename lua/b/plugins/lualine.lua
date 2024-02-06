@@ -1,40 +1,40 @@
 local fn = vim.fn
 
 local function spell()
-  return vim.o.spell and string.format('[SPELL]') or ''
+  return vim.o.spell and string.format("[SPELL]") or ""
 end
 
 local function lsp_name()
   local client = vim.lsp.get_active_clients()
-  return client ~= nil and client[1].name or ''
+  return client ~= nil and client[1].name or ""
 end
 
 --- show indicator for Chinese IME
 local function ime_state()
   if vim.g.is_mac then
     -- ref: https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/xkblayout.vim#L11
-    local layout = fn.libcall(vim.g.XkbSwitchLib, 'Xkb_Switch_getXkbLayout', '')
+    local layout = fn.libcall(vim.g.XkbSwitchLib, "Xkb_Switch_getXkbLayout", "")
 
     -- We can use `xkbswitch -g` on the command line to get current mode.
     -- mode for macOS builtin pinyin IME: com.apple.inputmethod.SCIM.ITABC
     -- mode for Rime: im.rime.inputmethod.Squirrel.Rime
     local res = fn.match(layout, [[\v(Squirrel\.Rime|SCIM.ITABC)]])
     if res ~= -1 then
-      return '[CN]'
+      return "[CN]"
     end
   end
 
-  return ''
+  return ""
 end
 
 local function trailing_space()
   if not vim.o.modifiable then
-    return ''
+    return ""
   end
 
   local line_num = nil
 
-  for i = 1, fn.line('$') do
+  for i = 1, fn.line("$") do
     local linetext = fn.getline(i)
     -- To prevent invalid escape error, we wrap the regex string with `[[]]`.
     local idx = fn.match(linetext, [[\v\s+$]])
@@ -45,36 +45,36 @@ local function trailing_space()
     end
   end
 
-  return line_num ~= nil and string.format('[%d]trailing', line_num) or ''
+  return line_num ~= nil and string.format("[%d]trailing", line_num) or ""
 end
 
 local function mixed_indent()
   if not vim.o.modifiable then
-    return ''
+    return ""
   end
 
   local space_pat = [[\v^ +]]
   local tab_pat = [[\v^\t+]]
-  local space_indent = fn.search(space_pat, 'nwc')
-  local tab_indent = fn.search(tab_pat, 'nwc')
+  local space_indent = fn.search(space_pat, "nwc")
+  local tab_indent = fn.search(tab_pat, "nwc")
   local mixed = (space_indent > 0 and tab_indent > 0)
   local mixed_same_line
   if not mixed then
-    mixed_same_line = fn.search([[\v^(\t+ | +\t)]], 'nwc')
+    mixed_same_line = fn.search([[\v^(\t+ | +\t)]], "nwc")
     mixed = mixed_same_line > 0
   end
   if not mixed then
-    return ''
+    return ""
   end
   if mixed_same_line ~= nil and mixed_same_line > 0 then
-    return 'MI:' .. mixed_same_line
+    return "MI:" .. mixed_same_line
   end
   local space_indent_cnt = fn.searchcount({ pattern = space_pat, max_count = 1e3 }).total
   local tab_indent_cnt = fn.searchcount({ pattern = tab_pat, max_count = 1e3 }).total
   if space_indent_cnt > tab_indent_cnt then
-    return 'MI:' .. tab_indent
+    return "MI:" .. tab_indent
   else
-    return 'MI:' .. space_indent
+    return "MI:" .. space_indent
   end
 end
 
@@ -95,81 +95,81 @@ end
 
 return {
   -- Set lualine as statusline
-  'nvim-lualine/lualine.nvim',
+  "nvim-lualine/lualine.nvim",
   -- See `:help lualine.txt`
   opts = {
     {
       options = {
         icons_enabled = true,
-        theme = 'onedark',
-        section_separators = { left = '', right = '' },
-        component_separators = { left = '', right = '' },
+        theme = "onedark",
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
         disabled_filetypes = {},
         always_divide_middle = true,
       },
       sections = {
-        lualine_a = { 'mode' },
+        lualine_a = { "mode" },
         lualine_b = {
-          'branch',
+          "branch",
           {
-            'diff',
+            "diff",
             source = diff,
           },
         },
         lualine_c = {
-          'filename',
+          "filename",
           {
             ime_state,
-            color = { fg = 'black', bg = '#f46868' },
+            color = { fg = "black", bg = "#f46868" },
           },
           {
             spell,
-            color = { fg = 'black', bg = '#a7c080' },
+            color = { fg = "black", bg = "#a7c080" },
           },
         },
         lualine_x = {
-          'encoding',
+          "encoding",
           {
-            'fileformat',
+            "fileformat",
             symbols = {
-              unix = 'unix',
-              dos = 'win',
-              mac = 'mac',
+              unix = "unix",
+              dos = "win",
+              mac = "mac",
             },
           },
-          'filetype',
+          "filetype",
           {
             lsp_name,
-            color = { fg = '#394b70', bg = '#73daca' },
+            color = { fg = "#394b70", bg = "#73daca" },
           },
         },
-        lualine_y = { 'progress' },
+        lualine_y = { "progress" },
         lualine_z = {
-          'location',
+          "location",
           {
-            'diagnostics',
-            sources = { 'nvim_diagnostic' },
+            "diagnostics",
+            sources = { "nvim_diagnostic" },
           },
           {
             trailing_space,
-            color = 'WarningMsg',
+            color = "WarningMsg",
           },
           {
             mixed_indent,
-            color = 'WarningMsg',
+            color = "WarningMsg",
           },
         },
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { 'filename' },
-        lualine_x = { 'location' },
+        lualine_c = { "filename" },
+        lualine_x = { "location" },
         lualine_y = {},
         lualine_z = {},
       },
       tabline = {},
-      extensions = { 'quickfix', 'fugitive', 'nvim-tree' },
-    }
+      extensions = { "quickfix", "fugitive", "nvim-tree" },
+    },
   },
 }

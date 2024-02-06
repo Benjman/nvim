@@ -1,8 +1,8 @@
 return {
-  'folke/todo-comments.nvim',
+  "folke/todo-comments.nvim",
   opts = {
     search = {
-      command = 'rg',
+      command = "rg",
       args = {
         "--glob=!lib/",
         "--color=never",

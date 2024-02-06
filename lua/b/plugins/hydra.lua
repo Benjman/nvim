@@ -1,5 +1,5 @@
 return {
-  'anuvyklack/hydra.nvim',
+  "anuvyklack/hydra.nvim",
   config = function()
     local win_hint = [[
     ^^^^^^     Move     ^^^^^^   ^^     Split         ^^^^    Size
@@ -11,41 +11,41 @@ return {
     ^ ^ ^ ^ ^ ^   ^ ^ ^ ^ ^ ^    _b_: choose buffer   ^ ^ ^ ^    _<Esc>_
     ]]
 
-    require('hydra')({
+    require("hydra")({
       hint = win_hint,
       config = {
         timeout = 500,
         hint = {
-          border = 'rounded',
+          border = "rounded",
         },
       },
-      mode = 'n',
-      body = '<C-w>',
+      mode = "n",
+      body = "<C-w>",
       heads = {
         -- Move focus
-        { 'h',     '<C-w>h' },
-        { 'j',     '<C-w>j' },
-        { 'k',     '<C-w>k' },
-        { 'l',     '<C-w>l' },
+        { "h", "<C-w>h" },
+        { "j", "<C-w>j" },
+        { "k", "<C-w>k" },
+        { "l", "<C-w>l" },
         -- Move window
-        { 'H',     '<C-w>H' },
-        { 'J',     '<C-w>J' },
-        { 'K',     '<C-w>K' },
-        { 'L',     '<C-w>L' },
+        { "H", "<C-w>H" },
+        { "J", "<C-w>J" },
+        { "K", "<C-w>K" },
+        { "L", "<C-w>L" },
         -- Split
-        { 's',     '<C-w>s' },
-        { 'v',     '<C-w>v' },
-        { 'q',     '<Cmd>try | close | catch | endtry<CR>', { desc = 'close window' } },
+        { "s", "<C-w>s" },
+        { "v", "<C-w>v" },
+        { "q", "<Cmd>try | close | catch | endtry<CR>", { desc = "close window" } },
         -- Size
-        { '+',     '<C-w>+' },
-        { '-',     '<C-w>-' },
-        { '>',     '2<C-w>>',                               { desc = 'increase width' } },
-        { '<',     '2<C-w><',                               { desc = 'decrease width' } },
-        { '=',     '<C-w>=',                                { desc = 'equalize' } },
+        { "+", "<C-w>+" },
+        { "-", "<C-w>-" },
+        { ">", "2<C-w>>", { desc = "increase width" } },
+        { "<", "2<C-w><", { desc = "decrease width" } },
+        { "=", "<C-w>=", { desc = "equalize" } },
         --
-        { 'b',     '<Cmd>BufExplorer<CR>',                  { exit = true, desc = 'choose buffer' } },
-        { '<Esc>', nil,                                     { exit = true } },
+        { "b", "<Cmd>BufExplorer<CR>", { exit = true, desc = "choose buffer" } },
+        { "<Esc>", nil, { exit = true } },
       },
     })
-  end
+  end,
 }

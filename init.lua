@@ -1,8 +1,8 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-require 'plugins'
-require 'settings'
-require 'keymaps'
-require 'autocmds'
-require 'theme'
+require("plugins")
+require("settings")
+require("keymaps")
+require("autocmds")
+require("theme")
