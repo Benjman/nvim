@@ -10,6 +10,7 @@ return {
   keys = {
     { '<leader>fe', '<cmd>Neotree left<cr>',  desc = '[F]ile [E]xplore' },
     { '<leader>ff', '<cmd>Neotree float<cr>', desc = '[F]ile explore [f]loat' },
+    { '<leader>fc', '<cmd>Neotree close<cr>', desc = '[F]ile explore [c]loat' },
   },
   opts = {
     filesystem = {
