@@ -51,6 +51,10 @@ vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap
 vim.keymap.set('n', '<leader>lss', '<cmd>LspStart<cr>', { desc = '[L]SP [S]erver: [S]tart' })
 vim.keymap.set('n', '<leader>lsi', '<cmd>LspInfo<cr>', { desc = '[L]SP [S]erver: [I]nfo' })
 
+-- quickfix
+vim.keymap.set('n', '<leader>qn', '<cmd>cnext<cr>', { desc = '[Q]uickfix [n]ext' })
+vim.keymap.set('n', '<leader>qp', '<cmd>cprev<cr>', { desc = '[Q]uickfix [p]revious' })
+
 -- File management
 vim.keymap.set('n', '<leader>fn',
   function()
