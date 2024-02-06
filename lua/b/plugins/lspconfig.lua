@@ -1,7 +1,28 @@
 return {
   {
+    -- lspconfig
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    config = function()
+      -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+      if vim.fn.executable('clangd') == 0 then
+        vim.notify('\'clangd\' not in path.', vim.log.levels
+          .INFO)
+      else
+        require('lspconfig').clangd.setup({
+          cmd = { 'clangd', '--background-index' },
+          capabilities = capabilities,
+        })
+      end
+    end,
+  },
+
+  {
+    -- Mason
+    'williamboman/mason.nvim',
     config = function()
       -- mason-lspconfig requires that these setup functions are called in this order
       -- before setting up the servers.
@@ -12,12 +33,11 @@ return {
       --  If you want to override the default filetypes that your language server will attach to you can
       --  define the property 'filetypes' to the map in question.
       local servers = {
-        clangd = {},
-
         lua_ls = {
           Lua = {
-            workspace = { checkThirdParty = false },
+            diagnostics = { globals = { 'vim' }, },
             telemetry = { enable = false },
+            workspace = { checkThirdParty = false },
           },
         },
       }
@@ -46,7 +66,6 @@ return {
     end,
     dependencies = {
       'folke/neodev.nvim',
-      'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
@@ -63,5 +82,37 @@ return {
     },
     opts = {
     },
+  },
+
+  -- Formatting
+  {
+    'stevearc/conform.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      local conform = require('conform')
+      conform.setup({
+        formatters_by_ft = {
+          cpp = { 'clang-format' },
+          lua = { 'stylua' },
+        },
+        format_on_save = {
+          lsp_fallback = true,
+          async = false,
+          timeout_ms = 1000,
+        },
+      })
+    end,
+  },
+
+  -- Linting
+  {
+    'mfussenegger/nvim-lint',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      local lint = require('lint')
+      lint.linters_by_ft = {
+        cpp = { 'clangtidy' },
+      }
+    end,
   },
 }
