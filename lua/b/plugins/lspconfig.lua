@@ -16,6 +16,14 @@ return {
           capabilities = capabilities,
         })
       end
+
+      if vim.fn.executable("cmake-language-server") == 0 then
+        vim.notify("'cmake-language-server' not in path.", vim.log.levels.INFO)
+      else
+        require("lspconfig").cmake.setup({
+          capabilities = capabilities,
+        })
+      end
     end,
   },
 
