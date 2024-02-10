@@ -141,10 +141,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, { desc = "Format current buffer with LSP" })
     vim.keymap.set("n", "<leader>Df", "<cmd>Format<cr>", desc("[D]ocument [F]ormat"))
 
-    require("which-key").register({
-      s = { name = "[L]SP [S]erver", _ = "which_key_ignore" },
-      S = { name = "[L]SP [S]ymbols", _ = "which_key_ignore" },
-    }, { prefix = "<leader>l" })
+    if pcall(require, "which-key") then
+      require("which-key").register({
+        s = { name = "[L]SP [S]erver", _ = "which_key_ignore" },
+        S = { name = "[L]SP [S]ymbols", _ = "which_key_ignore" },
+      }, { prefix = "<leader>l" })
+    end
 
     local signs = { Error = "", Info = "", Hint = "", Warn = "" }
     for type, icon in pairs(signs) do
