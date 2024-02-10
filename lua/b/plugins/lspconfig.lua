@@ -24,6 +24,15 @@ return {
           capabilities = capabilities,
         })
       end
+
+      if vim.fn.executable("clangd") == 0 then
+        vim.notify("'clangd' not in path.", vim.log.levels.INFO)
+      else
+        require("lspconfig").clangd.setup({
+          cmd = { "clangd", "--background-index" },
+          capabilities = capabilities,
+        })
+      end
     end,
   },
 
