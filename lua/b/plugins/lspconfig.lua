@@ -8,30 +8,16 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-      if vim.fn.executable("clangd") == 0 then
-        vim.notify("'clangd' not in path.", vim.log.levels.INFO)
-      else
-        require("lspconfig").clangd.setup({
+      local servers = {
+        clangd = {
           cmd = { "clangd", "--background-index" },
-          capabilities = capabilities,
-        })
-      end
+        },
+        cmake = {},
+        jdtls = {},
+      }
 
-      if vim.fn.executable("cmake-language-server") == 0 then
-        vim.notify("'cmake-language-server' not in path.", vim.log.levels.INFO)
-      else
-        require("lspconfig").cmake.setup({
-          capabilities = capabilities,
-        })
-      end
-
-      if vim.fn.executable("clangd") == 0 then
-        vim.notify("'clangd' not in path.", vim.log.levels.INFO)
-      else
-        require("lspconfig").clangd.setup({
-          cmd = { "clangd", "--background-index" },
-          capabilities = capabilities,
-        })
+      for k, v in pairs(servers) do
+        require("lspconfig")[k].setup(v)
       end
     end,
   },
