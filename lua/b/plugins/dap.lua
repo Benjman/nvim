@@ -21,7 +21,9 @@ return {
           default = path,
           completion = "file",
         })
-        require("dapui").open()
+        if path ~= nil and path ~= "" then
+          require("dapui").open()
+        end
         return path
       end,
       cwd = "${workspaceFolder}",
@@ -37,7 +39,7 @@ return {
     vim.keymap.set("n", "<leader>dc", require("dap").continue, { desc = "[C]ontinue" })
     vim.keymap.set("n", "<C-N>", require("dap").step_over, { desc = "Step Over" })
     vim.keymap.set("n", "<C-L>", require("dap").step_into, { desc = "Step Into" })
-    vim.keymap.set("n", "<C-K>", require("dap").step_out, { desc = "Step Out" })
+    vim.keymap.set("n", "<C-H>", require("dap").step_out, { desc = "Step Out" })
     vim.keymap.set("n", "<leader>db", require("dap").toggle_breakpoint, { desc = "Toggle Breakpoint" })
     -- vim.keymap.set("n", "<leader>dlp", function()
     --   require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
