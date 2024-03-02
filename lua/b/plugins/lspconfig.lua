@@ -9,15 +9,18 @@ return {
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
       local servers = {
-        clangd = {
-          cmd = { "clangd", "--background-index" },
-        },
+        bashls = { cmd = { "bash-language-server", "start" } },
+        clangd = { cmd = { "clangd", "--background-index" } },
         cmake = {},
+        -- glslls = {},
         jdtls = {},
       }
 
       for k, v in pairs(servers) do
-        require("lspconfig")[k].setup(v)
+        local server = require("lspconfig")[k]
+        if vim.inspect(server.document_config["default_config"]["cmd"][1]) then
+          server.setup(v)
+        end
       end
     end,
   },
