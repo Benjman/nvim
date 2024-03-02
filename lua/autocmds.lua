@@ -133,7 +133,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, desc("Hover Documentation"))
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, desc("Signature Documentation"))
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, desc("[G]oto [D]eclaration"))
+    vim.keymap.set("n", "gD", vim.lsp.buf.implementation, desc("[G]oto [D]eclaration"))
     vim.keymap.set("n", "<leader>Wa", vim.lsp.buf.add_workspace_folder, desc("[W]orkspace [A]dd Folder"))
     vim.keymap.set("n", "<leader>Wr", vim.lsp.buf.remove_workspace_folder, desc("[W]orkspace [R]emove Folder"))
     vim.keymap.set("n", "<leader>lst", "<cmd>LspStop<cr>", desc("[L]SP [S]erver: S[t]op"))
