@@ -1,0 +1,13 @@
+{
+  "extras": [
+    "lazyvim.plugins.extras.dap.core",
+    "lazyvim.plugins.extras.lang.clangd",
+    "lazyvim.plugins.extras.lang.cmake",
+    "lazyvim.plugins.extras.lang.java",
+    "lazyvim.plugins.extras.lang.markdown"
+  ],
+  "news": {
+    "NEWS.md": "2123"
+  },
+  "version": 3
+}
