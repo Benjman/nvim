@@ -1,0 +1,3 @@
+-- Highlighting for tokens like `public`, `private`, and `const`
+vim.api.nvim_set_hl(0, "@type.qualifier", { link = "@keyword" })
+vim.api.nvim_set_hl(0, "@storageclass", { link = "@keyword" })
