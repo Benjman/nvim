@@ -1,5 +1,13 @@
 return {
   "mfussenegger/nvim-dap",
+  opts = function(_, _)
+    require("dap").adapters.lldb = {
+      type = "executable",
+      command = "lldb",
+      name = "lldb",
+    }
+    require("dap.ext.vscode").load_launchjs(nil, { lldb = { "c", "cpp" } })
+  end,
 
   -- stylua: ignore
   keys = {
@@ -7,5 +15,6 @@ return {
     { "<M-l>", function() require("dap").step_into() end, desc = "Step Into" },
     { "<M-k>", function() require("dap").step_out() end, desc = "Step Out" },
     { "<M-j>", function() require("dap").step_over() end, desc = "Step Over" },
+    { "<leader>dr", function() require("dapui").open({reset = true}) end, desc = "Reset UI" },
   },
 }
