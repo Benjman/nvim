@@ -3,8 +3,8 @@ return {
   opts = function(_, _)
     require("dap").adapters.lldb = {
       type = "executable",
-      command = "lldb",
-      name = "lldb",
+      command = "codelldb",
+      name = "codelldb",
     }
   end,
 
