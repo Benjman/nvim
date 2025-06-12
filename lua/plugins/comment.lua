@@ -1,13 +1,14 @@
 return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
+    event = "VeryLazy",
     opts = {
       config = {
         cpp = "// %s",
       },
     },
-    -- enabled = false,
   },
+
   {
     "numToStr/Comment.nvim",
     event = "VeryLazy",

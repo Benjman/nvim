@@ -1,11 +1,12 @@
 return {
-  { "catppuccin/nvim" },
-  { "EdenEast/nightfox.nvim" },
-  { "folke/tokyonight.nvim" },
-  { "navarasu/onedark.nvim" },
-  { "projekt0n/github-nvim-theme" },
-  { "rebelot/kanagawa.nvim" },
-  { "rose-pine/neovim" },
+  priority = 100,
+  { "catppuccin/nvim", event = "VeryLazy" },
+  { "EdenEast/nightfox.nvim", event = "VeryLazy" },
+  { "folke/tokyonight.nvim", event = "VeryLazy" },
+  { "navarasu/onedark.nvim", event = "VeryLazy" },
+  { "projekt0n/github-nvim-theme", event = "VeryLazy" },
+  { "rebelot/kanagawa.nvim", event = "VeryLazy" },
+  { "rose-pine/neovim", event = "VeryLazy" },
 
   {
     "LazyVim/LazyVim",
